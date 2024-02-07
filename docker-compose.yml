@@ -20,16 +20,25 @@ services:
       - ./backend:/app/backend
     expose:
       - 8000
+  site:
+    restart: unless-stopped
+    build:
+      context: frontend/.
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./frontend/site:/app
+    expose:
+      - 3000
     environment:
-        DEBUG: "True"
-        CELERY_BROKER_URL: "redis://redis:6379/0"
-        CELERY_RESULT_BACKEND: "redis://redis:6379/0"
-        DJANGO_DB: postgresql
-        POSTGRES_HOST: db 
-        POSTGRES_NAME: postgres
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: postgres
-        POSTGRES_PORT: 5432
+      DEBUG: "True"
+      CELERY_BROKER_URL: "redis://redis:6379/0"
+      CELERY_RESULT_BACKEND: "redis://redis:6379/0"
+      DJANGO_DB: postgresql
+      POSTGRES_HOST: db
+      POSTGRES_NAME: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_PORT: 5432
   worker:
     restart: unless-stopped
     build:
@@ -40,15 +49,15 @@ services:
       - static_volume:/app/backend/statics
       - ./backend:/app/backend
     environment:
-        DEBUG: "True"
-        CELERY_BROKER_URL: "redis://redis:6379/0"
-        CELERY_RESULT_BACKEND: "redis://redis:6379/0"
-        DJANGO_DB: postgresql
-        POSTGRES_HOST: db 
-        POSTGRES_NAME: postgres
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: postgres
-        POSTGRES_PORT: 5432
+      DEBUG: "True"
+      CELERY_BROKER_URL: "redis://redis:6379/0"
+      CELERY_RESULT_BACKEND: "redis://redis:6379/0"
+      DJANGO_DB: postgresql
+      POSTGRES_HOST: db
+      POSTGRES_NAME: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_PORT: 5432
     depends_on:
       - server
       - redis
@@ -62,12 +71,12 @@ services:
     restart: unless-stopped
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    environment: 
-        POSTGRES_DB: postgres
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: postgres
-    expose:
-      - 5432
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
 
 volumes:
   static_volume: {}

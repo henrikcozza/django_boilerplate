@@ -7,10 +7,14 @@ from .managers import CustomUserManager
 
 class CustomUser(AbstractUser):
     username = None
-    email = models.EmailField(_("email address"), unique=True)
+    email = models.EmailField(_("Email"), unique=True)
+    cpf = models.CharField(_("CPF"), unique=True, max_length=14)
+    data_nascimento =  models.DateField()
+    phone = models.CharField(_("Telefone"), unique=True, max_length=15)
+    nome = models.CharField(_("Nome completo"), max_length=300)
 
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
+    USERNAME_FIELD = "cpf"
+    REQUIRED_FIELDS = [cpf, email, phone]
 
     objects = CustomUserManager()
 

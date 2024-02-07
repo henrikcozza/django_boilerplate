@@ -2,6 +2,7 @@ django
 djangorestframework
 markdown
 django-filter
+django-rest-swagger
 
 celery[redis]
 psycopg2-binary
