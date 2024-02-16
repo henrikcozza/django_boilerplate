@@ -1,0 +1,18 @@
+{
+  "name": "tests_load",
+  "version": "1.0.0",
+  "description": "testes de carga com K6",
+  "main": "index.js",
+  "scripts": {
+    "start-10k": "k6 run index.js --vus 10000 --duration 60s",
+    "start-1k": "k6 run index.js --vus 1000 --duration 60s",
+    "start-500": "k6 run index.js --vus 500 --duration 60s",
+    "start-100": "k6 run index.js --vus 100 --duration 60s",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "conza",
+  "license": "ISC",
+  "dependencies": {
+    "k6": "^0.0.0"
+  }
+}

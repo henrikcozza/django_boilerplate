@@ -7,6 +7,9 @@ import compre from "@/public/assets/images/compre-oetker.png";
 import participe from "@/public/assets/images/participar.png";
 import ganhe from "@/public/assets/images/ganhe-oetker.png";
 import como from "@/public/assets/images/como-participar.png";
+import instruction from "@/public/assets/images/como-participar_ilustrado.png";
+import instructionMobile from "@/public/assets/images/como-participar_ilustrado_mobile.png";
+import { Agbalumo, Julee } from "next/font/google";
 
 export default function Home() {
   return (
@@ -38,14 +41,22 @@ export default function Home() {
         </div>
       </section>
       <section data-name="how-to"
-        className="  flex items-center justify-center flex-wrap w-full bg-blue-500 
-        pt-8 bg-indigo-500  h-[75vw]
+        className="  flex items-center justify-center flex-wrap w-full 
+        pt-8 bg-indigo-500 md:pb-60
         "
       >
-        <div className="w-[100%] m-8 my-18 flex justify-center">
-          <Image className="w-100" src={como} alt="como participar" />
+        <div className="w-[100%] m-8 my-18 flex justify-center flex-wrap">
+          <Image className="w-100 h-20" src={como} alt="como participar" />
+
         </div >
+        <div
+          className="bg-instruction-mobile w-full z-0
+            bg-[length:100vw_400vw] bg-no-repeat bg-top h-[400vw]
+            md:bg-instruction md:h-[44vw] md:bg-[length:96vw_44vw] mt-16 md:mt-20"
+        ></div>
       </section>
     </main>
   );
 }
+
+

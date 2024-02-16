@@ -11,6 +11,8 @@ const config: Config = {
       backgroundImage: {
         'promo-banner': "url('../public/assets/images/promo-oetker.jpg')",
         'promo-banner-mobile': "url('../public/assets/images/promo-oetker-mobile.jpg')",
+        "instruction": "url('../public/assets/images/como-participar_ilustrado.png')",
+        "instruction-mobile": "url('../public/assets/images/como-participar_ilustrado_mobile.png')",
       },
     },
   },
